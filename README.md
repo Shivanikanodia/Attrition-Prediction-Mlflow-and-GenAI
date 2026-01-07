@@ -11,7 +11,9 @@
 
 This project builds an end-to-end, production-ready ML system to predict employee attrition and surface key drivers using explainable and reproducible machine learning practices.
 
-## 🔄 End-to-End ML Pipeline:
+---
+
+###  End-to-End ML Pipeline:
 
 Data Management with Unity Catalog
 
@@ -30,11 +32,11 @@ Experiment Tracking & Monitoring (MLflow)
 -  Attributes :Demographics, Job Role, Job Satisfaction levels and Performance metrics. 
 -  Checked Unique values in each category to see frequency of different categories and its distribution.
 -  Identified missing values and empty strings using insull.sum().
--  Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most values concentrated on the lower end. Used log1p for transformation. 
+-  Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most  values concentrated on the lower end. Used log1p for transformation. 
   
 ---
 
-#### Unity Catalog:
+#### Unity Catalog & Medallion Architecture:
 
 The project follows a Bronze–Silver–Gold medallion architecture to ensure scalable, reliable, and reusable ML features.
 
@@ -43,11 +45,6 @@ The project follows a Bronze–Silver–Gold medallion architecture to ensure sc
 • Gold: Feature-engineered and analytics-ready tables used for ML training and inference
 
 Created a Unity Catalog catalog (ml_catalog) and schema (ml_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
-
-
-### Medallion Architecture:
-
-![Medallion Architecture](docs/architecture/medallion_architecture.png)
 
 ---
 
@@ -110,11 +107,6 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 ### Conclusion:
 
-- After evaluating multiple models—including Logistic Regression, Xgboost and Random Forest (with maximum depth of 6 and n_estimators of 200) emerged as the best-performing model for our attrition prediction task. With a tuned threshold of 0.33, it struck an effective balance between interpretability, performance, and generalization. 
-- The model achieved a recall of 82% and precision of 70% on detecting attrition, which is crucial for early risk detection while minimizing false positives that may harm employee trust.
-- Unity Catalog ensures secure, governed, and scalable data access.
-- SHAP explainability provides transparency into model decisions.
-- MLflow ensures experiment reproducibility, loggging and tracking for deployment.
   
 ---
 
@@ -136,7 +128,6 @@ This project demonstrates how machine learning can be operationalized responsibl
 • Automate retraining pipelines using Databricks Jobs with scheduled evaluation and rollback strategies  
 • Enable continuous monitoring of feature drift and prediction quality  
 • Extend the system with an AI agent for proactive alerts and retention recommendations
-
 
 ---
 
