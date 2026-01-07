@@ -1,27 +1,28 @@
 ### Workforce Attrition Prediction with Explainable and Reproducible ML
 
-Predicting Employee churn and identifying key drivers of attrition using scalable machine learning practices. 
-Built with classification and booster algorithms. Used Unity Catalog to store models and features, and MLflow for experiment tracking, model reproducibility and transparency.
+## 🚀 TL;DR
+• Built a production-style ML pipeline on Databricks to predict employee attrition using Logistic Regression, Random Forest, and XGBoost  
+• Implemented Bronze–Silver–Gold medallion architecture with Unity Catalog for governed, versioned ML features  
+• Tracked and registered models using MLflow, achieving 82% recall and 70% precision with explainable SHAP insights  
+• Deployed the model via Databricks Model Serving for real-time inference
 
 ---
 
 #### Problem Statement:
 
-This project focuses on predicting which employees are most likely to leave, store the important predictors from feature selection in Unity Catalog for Business to use it later for comparison and decisions.  By leveraging machine learning models, MLflow and  SHAP  the goal is to empower HR teams with proactive insights—helping them improve retention through monitoring model metrics. 
+This project builds an end-to-end, production-ready ML system to predict employee attrition and surface key drivers using explainable and reproducible machine learning practices.
 
-#### ML pipeline covering:
+## 🔄 End-to-End ML Pipeline:
 
-**Data Management with Unity Catalog (secure and versioned Delta tables)**
+Data Management with Unity Catalog
 
-**Data Cleaning and Collection** 
+Data Cleaning & Validation
 
-**Exploratory Data Analysis**
+Feature Engineering & Selection
 
-**Data Preprocessing (Data Transformation and Feature Selection using Chi-Square and T-test)**
-  
-**Model training, testing with Logistic Regression, Random Forest XGBoost and Evaluation**
+Model Training & Evaluation
 
-**Model monitoring and tracking using MLflow (parameters, metrics, artifacts, comparison).**
+Experiment Tracking & Monitoring (MLflow)
 
 ---
 
@@ -34,9 +35,20 @@ This project focuses on predicting which employees are most likely to leave, sto
   
 ---
 
-#### Unity Catalog & Access Control:
+#### Unity Catalog:
 
-Created a Catalog (`ml_catalog`) and schema (`ml_schema`) under a managed volume to store both the complete dataset and the training subset in Delta format. This structure enables governed, scalable, and versioned access to data for the ML workflow.
+The project follows a Bronze–Silver–Gold medallion architecture to ensure scalable, reliable, and reusable ML features.
+
+• Bronze: Raw employee event data ingested as Delta tables  
+• Silver: Cleaned, standardized, and validated datasets  
+• Gold: Feature-engineered and analytics-ready tables used for ML training and inference
+
+Created a Unity Catalog catalog (ml_catalog) and schema (ml_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
+
+
+### Medallion Architecture:
+
+![Medallion Architecture](docs/architecture/medallion_architecture.png)
 
 ---
 
@@ -82,11 +94,20 @@ Each dashboard recorded: adjusted_f1, adjusted_precision, adjusted_recall, preci
 
 ### MODEL SERVING AND REGISTRY: 
 
-Registered model using Model Registry in databricks to serve it later for deployment for making real time predictions. Provided signatures examples to be used by registered and served model for making predictions at endpoint in JSON format. 
+The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions in JSON format, enabling integration with downstream applications and monitoring pipelines.
+
 
 <img width="632" height="227" alt="Screenshot 2025-10-18 at 20 46 12" src="https://github.com/user-attachments/assets/30af9741-4000-4161-b440-9446459431aa" />
 
 ---
+
+## 📊 Model Performance Snapshot
+
+| Model | Precision | Recall | F1 Score |
+|-----|---------|-------|--------|
+| Logistic Regression | 0.62 | 0.74 | 0.67 |
+| Random Forest | 0.70 | 0.82 | 0.75 |
+| XGBoost | 0.68 | 0.80 | 0.73 |
 
 ### Conclusion:
 
@@ -106,10 +127,17 @@ Registered model using Model Registry in databricks to serve it later for deploy
    
 --- 
 
+
+## 💡 Why This Project Matters
+This project demonstrates how machine learning can be operationalized responsibly in people analytics by combining scalable data architecture, reproducible experimentation, explainability, and real-time serving—bridging the gap between data science and production ML systems.
+
+
 ### Future Scope:
 
-- Automating retraining via Databricks Jobs and retraining with 50,000 row making inference on Production level data. 
-- AI Agent for Attrition Predictions, giving alerts on employee sentiments and recommending strategies. 
+• Automate retraining pipelines using Databricks Jobs with scheduled evaluation and rollback strategies  
+• Enable continuous monitoring of feature drift and prediction quality  
+• Extend the system with an AI agent for proactive alerts and retention recommendations
+
 
 ---
 
