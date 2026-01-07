@@ -1,4 +1,4 @@
-### Workforce Attrition Prediction with Explainable and Reproducible ML
+### Workforce Attrition Prediction with Explainable & Production-Ready ML
 
 • Built a production-style ML pipeline on Databricks to predict employee attrition using Logistic Regression, Random Forest, and XGBoost  
 • Implemented Bronze–Silver–Gold medallion architecture with Unity Catalog for governed, versioned ML features  
@@ -27,13 +27,14 @@ Experiment Tracking & Monitoring (MLflow)
 
 ---
 
-#### Dataset Overview:
+#### Dataset Overview: 
 
--  Attributes :Demographics, Job Role, Job Satisfaction levels and Performance metrics. 
--  Checked Unique values in each category to see frequency of different categories and its distribution.
--  Identified missing values and empty strings using insull.sum().
--  Features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years show right-skewed distributions, with most  values concentrated on the lower end. Used log1p for transformation. 
-  
+The dataset includes employee demographics, Job role information, Engagement, and performance-related metrics.
+Performed categorical feature analysis by examining unique values and their frequency distributions to understand representation and potential imbalance across categories.
+Identified and handled missing values and empty strings using isnull().sum() and appropriate data-cleaning strategies.
+Numerical features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years exhibited right-skewed distributions. 
+Applied log1p transformation to reduce skewness and stabilize variance for improved model performance.
+
 ---
 
 #### Unity Catalog & Medallion Architecture:
@@ -48,10 +49,13 @@ Created a Unity Catalog catalog (ml_catalog) and schema (ml_schema) to store Bro
 
 ---
 
-#### FEATURE SELECTION:
+### Feature Selection:
 
-Capture attrition trends (Based on Demographics, Career Trajectory, Growth Opportunites and Organisation Culture). 
-The t-test and chi-square analyses were conducted to examine relationships between various features and employee attrition.
+- Feature selection was performed to identify the most predictive and stable drivers of employee attrition while reducing noise and multicollinearity.
+- Applied Chi-square tests to evaluate the association between categorical features (e.g., job role, overtime, work-life balance) and employee attrition.
+- Used two-sample t-tests to assess statistically significant differences in continuous features (e.g., monthly income, years at company, distance from home) between attrition and non-attrition groups.
+- Combined statistical test results with domain knowledge to ensure retained features were both predictive and interpretable for business stakeholders.
+- Validated feature importance consistency across Logistic Regression, Random Forest, and XGBoost models to reduce model-specific bias.
 
 ___
 
@@ -107,12 +111,13 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 ### Conclusion:
 
-  
+- A tuned Random Forest model (max_depth = 6, n_estimators = 200) delivered the best performance, achieving 82% recall and 70% precision with a threshold of 0.33.
+- Unity Catalog enabled governed data access, SHAP provided explainability, and MLflow ensured reproducible training, tracking, and deployment.
 ---
 
 ### HIGH RISK FACTORS FROM MODEL AND RECOMMENDATIONS TO HR TEAMS: 
 
-- Overtime, Low job satisfaction and Poor work-life balance - Monitor satisfaction & workload monthly.
+- Overtime, Low Job satisfaction and Poor work-life balance - Monitor satisfaction & workload monthly.
 - Employees with long commutes or frequent travel - Enable flexible work or hybrid policies.
 - Employees with limited growth, low income or recognition  - Design retention bonuses or stock options.
    
