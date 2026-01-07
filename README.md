@@ -1,6 +1,5 @@
 ### Workforce Attrition Prediction with Explainable and Reproducible ML
 
-## 🚀 TL;DR
 • Built a production-style ML pipeline on Databricks to predict employee attrition using Logistic Regression, Random Forest, and XGBoost  
 • Implemented Bronze–Silver–Gold medallion architecture with Unity Catalog for governed, versioned ML features  
 • Tracked and registered models using MLflow, achieving 82% recall and 70% precision with explainable SHAP insights  
