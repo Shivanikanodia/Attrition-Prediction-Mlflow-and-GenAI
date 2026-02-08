@@ -101,6 +101,10 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 ---
 
+### GenAI app using Served Model for making real time predictions and recommendations:
+
+
+
 ## 📊 Model Performance Snapshot
 
 | Model | Precision | Recall | F1 Score |
