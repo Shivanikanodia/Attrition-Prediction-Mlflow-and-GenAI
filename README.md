@@ -1,29 +1,40 @@
-### Workforce Attrition Prediction with Explainable & Production-Ready ML
+### End-to-End Employee Attrition Prediction Pipeline on Databricks (MLflow, Unity Catalog, SHAP, GenAI)
 
-• Built a production-style ML pipeline on Databricks to predict employee attrition using Logistic Regression, Random Forest, and XGBoost  
-• Implemented Bronze–Silver–Gold medallion architecture with Unity Catalog for governed, versioned ML features  
-• Tracked and registered models using MLflow, achieving 82% recall and 70% precision with explainable SHAP insights  
-• Deployed the model via Databricks Model Serving for real-time inference
+Attrition and Turnover Rate refers to the rate at which employees leave a company. Employee turnover is a costly problem for organizations. The cost of replacing an employee can be quite large, and a study found that companies typically pay about one-fifth of an employee's salary to replace them. 
 
----
+The cost can significantly increase if executives or highest-paid employees are to be replaced. The cost of replacing employees for most employers remains significant. This is due to the amount of time spent to interview and find a replacement, sign-on bonuses, and the loss of productivity for several months while the new employee gets accustomed to the new role. 
 
 #### Problem Statement:
 
-This project builds an end-to-end, production-ready ML system to predict employee attrition and surface key drivers using explainable and reproducible machine learning practices.
+HR Leaders and HRBPs face high attrition and rising hiring costs without clear visibility into high-risk segments or key attrition drivers. This project builds a data-driven framework to predict employee attrition, assess financial impact, and recommend targeted retention strategies.
 
----
+This is a supervised binary classification problem where:
 
-###  End-to-End ML Pipeline:
+0 → Likely to stay
 
-Data Management with Unity Catalog
+1 → Likely to leave
 
-Data Cleaning & Validation
+The target variable represents the probability of an employee leaving the company.
 
-Feature Engineering & Selection
+### Project Structure
 
-Model Training & Evaluation
+**Data Engineering:**  Data exploration and storage in Unity Catalog using Medallion Architecture (Bronze, Silver, Gold).
 
-Experiment Tracking & Monitoring (MLflow)
+**EDA:** Distribution analysis, summary statistics, skewness, and visualizations.
+
+**Feature Selection:** Statistical testing (A/B testing) to identify key predictors and store feature tables.
+
+**Preprocessing:** Encoding, scaling, and train-test split.
+
+**Modeling:** Train and evaluate classification models using confusion matrix and classification report.
+
+**MLflow Tracking:** Log parameters, metrics, artifacts, and model files for reproducibility.
+
+**Explainability:** SHAP analysis to identify key attrition drivers.
+
+**GenAI Integration:** Use Databricks SDK (WorkspaceClient) to generate natural language explanations of attrition risk, financial impact, and recommended intervention strategies.
+
+This enables proactive retention planning and optimized HR budget allocation.
 
 ---
 
