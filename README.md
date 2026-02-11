@@ -4,6 +4,8 @@ Attrition and Turnover Rate refers to the rate at which employees leave a compan
 
 The cost can significantly increase if executives or highest-paid employees are to be replaced. The cost of replacing employees for most employers remains significant. This is due to the amount of time spent to interview and find a replacement, sign-on bonuses, and the loss of productivity for several months while the new employee gets accustomed to the new role. 
 
+--- 
+
 #### Problem Statement:
 
 HR Leaders and HRBPs face high attrition and rising hiring costs without clear visibility into high-risk segments or key attrition drivers. This project builds a data-driven framework to predict employee attrition, assess financial impact, and recommend targeted retention strategies.
@@ -15,6 +17,8 @@ This is a supervised binary classification problem where:
 1 → Likely to leave
 
 The target variable represents the probability of an employee leaving the company.
+
+---
 
 ### Project Structure
 
@@ -56,7 +60,7 @@ The project follows a Bronze–Silver–Gold medallion architecture to ensure sc
 • Silver: Cleaned, standardized, and validated datasets  
 • Gold: Feature-engineered and analytics-ready tables used for ML training and inference
 
-Created a Unity Catalog catalog (ml_catalog) and schema (ml_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
+Created a Unity Catalog catalog (Attrition_catalog) and schema (Attrition_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
 
 ---
 
@@ -116,6 +120,10 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 
 
+
+
+
+
 ## 📊 Model Performance Snapshot
 
 | Model | Precision | Recall | F1 Score |
@@ -139,15 +147,9 @@ The selected model was registered in the Databricks Model Registry and deployed 
 --- 
 
 
-## 💡 Why This Project Matters
-This project demonstrates how machine learning can be operationalized responsibly in people analytics by combining scalable data architecture, reproducible experimentation, explainability, and real-time serving—bridging the gap between data science and production ML systems.
+## 💡 Why This Project Matters:
 
 
-### Future Scope:
-
-• Automate retraining pipelines using Databricks Jobs with scheduled evaluation and rollback strategies  
-• Enable continuous monitoring of feature drift and prediction quality  
-• Extend the system with an AI agent for proactive alerts and retention recommendations
 
 ---
 
