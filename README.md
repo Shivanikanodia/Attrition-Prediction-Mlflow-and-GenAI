@@ -149,7 +149,9 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 ## 💡 Why This Project Matters:
 
+This project operationalizes machine learning in People Analytics by combining scalable data architecture, reproducible experimentation, explainability, and real-time serving—bridging the gap between data science and production ML.
 
+It enables HR leaders to prioritize interventions based on financial risk, translates predictions into executive-ready cost metrics, improves transparency through SHAP-based explainability, reduces reactive hiring via probabilistic attrition forecasting, and integrates predictive ML with Generative AI to automate risk insights and recommendations
 
 ---
 
