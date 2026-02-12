@@ -103,25 +103,6 @@ As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration
 
 
 
-
-Each dashboard recorded: adjusted_f1, adjusted_precision, adjusted_recall, precision, recall and f1 score. 
-
-
-
-
-
-<img width="908" height="363" alt="Screenshot 2025-10-07 at 07 30 50" src="https://github.com/user-attachments/assets/fcd14556-35a6-40a7-a289-db8e17fb9729" />
-
-
-
-
-
-
-<img width="928" height="362" alt="Screenshot 2025-10-07 at 07 31 20" src="https://github.com/user-attachments/assets/f5446022-0a39-4c09-98ee-10de40d85eda" />
-
-
-
-
 ---
 
 
