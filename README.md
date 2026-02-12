@@ -1,4 +1,4 @@
-### End-to-End Employee Attrition Prediction Pipeline on Databricks (MLflow, Unity Catalog, SHAP, GenAI)
+### End-to-End Employee Attrition Prediction Pipeline on Databricks (MLflow, Unity Catalog and GenAI)
 
 Attrition and Turnover Rate refers to the rate at which employees leave a company. Employee turnover is a costly problem for organizations. The cost of replacing an employee can be quite large, and a study found that companies typically pay about one-fifth of an employee's salary to replace them. 
 
@@ -34,8 +34,6 @@ The target variable represents the probability of an employee leaving the compan
 
 **MLflow Tracking:** Log parameters, metrics, artifacts, and model files for reproducibility.
 
-**Explainability:** SHAP analysis to identify key attrition drivers.
-
 **GenAI Integration:** Use Databricks SDK (WorkspaceClient) to generate natural language explanations of attrition risk, financial impact, and recommended intervention strategies.
 
 This enables proactive retention planning and optimized HR budget allocation.
@@ -48,7 +46,6 @@ The dataset includes employee demographics, Job role information, Engagement, an
 Performed categorical feature analysis by examining unique values and their frequency distributions to understand representation and potential imbalance across categories.
 Identified and handled missing values and empty strings using isnull().sum() and appropriate data-cleaning strategies.
 Numerical features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years exhibited right-skewed distributions. 
-Applied log1p transformation to reduce skewness and stabilize variance for improved model performance.
 
 ---
 
@@ -56,11 +53,13 @@ Applied log1p transformation to reduce skewness and stabilize variance for impro
 
 The project follows a Bronze–Silver–Gold medallion architecture to ensure scalable, reliable, and reusable ML features.
 
-• Bronze: Raw employee event data ingested as Delta tables  
-• Silver: Cleaned, standardized, and validated datasets  
-• Gold: Feature-engineered and analytics-ready tables used for ML training and inference
+• Bronze: Raw employee event data ingested as Delta tables. **(bronze-emplpoyee_raw)** 
+• Silver: Cleaned, standardized, and validated datasets. **(silver_employee_clean)**
+• Gold: Feature-engineered and analytics-ready tables used for ML training and inference. **(employee_interactions)**
 
-Created a Unity Catalog catalog (Attrition_catalog) and schema (Attrition_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
+Created a Unity Catalog catalog (employee_attrition_catalog) and schema (attrition_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
+
+<img width="662" height="298" alt="image" src="https://github.com/user-attachments/assets/6204d8cc-c4e2-49d3-9fb8-f6434b8d1601" />
 
 ---
 
@@ -71,7 +70,6 @@ Created a Unity Catalog catalog (Attrition_catalog) and schema (Attrition_schema
 - Used two-sample t-tests to assess statistically significant differences in continuous features (e.g., monthly income, years at company, distance from home) between attrition and non-attrition groups.
 - Combined statistical test results with domain knowledge to ensure retained features were both predictive and interpretable for business stakeholders.
 - Validated feature importance consistency across Logistic Regression, Random Forest, and XGBoost models to reduce model-specific bias.
-
 ___
 
 #### MODEL SELECTION:
@@ -97,23 +95,20 @@ Logged key hyperparameters, evaluation metrics, trained model and visual artifac
 
 As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration of each Run and metrics logged.  Used the MLflow UI in Databricks to compare multiple runs of Logistic Regression, Random Forest, and XGBoost. 
 
-
-
 <img width="1264" height="440" alt="Screenshot 2025-10-07 at 11 25 24" src="https://github.com/user-attachments/assets/1ef7910e-319a-4d11-9ffd-5691308bcfb8" />
-
 
 ---
 
-### MODEL SERVING AND REGISTRY: 
+### MODEL REGISTERED: 
 
-The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions, enabling integration with downstream applications and monitoring pipelines.
+The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. 
 
-
-
-<img width="632" height="227" alt="Screenshot 2025-10-18 at 20 46 12" src="https://github.com/user-attachments/assets/30af9741-4000-4161-b440-9446459431aa" />
+<img width="1652" height="770" alt="image" src="https://github.com/user-attachments/assets/337de7ee-528b-47fe-b096-f43e4f133c5f" />
 
 
+### MODEL SERVED: 
 
+The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions, enabling integration with downstream applications and monitoring pipelines.
 
 
 <img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/6661d742-a47f-433c-9773-8bd5929310fc" />
@@ -121,14 +116,21 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 ---
 
-
 ### GenAI app for making real time predictions and recommendations:
-
 
 <img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" />
 
-
 ---
+
+### Model Outputs and using Genie to infer from UC Tables:
+
+<img width="729" height="135" alt="Screenshot 2026-02-11 at 22 33 35" src="https://github.com/user-attachments/assets/689ee710-46c0-481d-b591-85d6462a82ca" />
+
+
+<img width="1134" height="409" alt="Screenshot 2026-02-11 at 22 34 43" src="https://github.com/user-attachments/assets/6f529950-1e8c-4a04-8221-ff77067eca58" />
+
+
+
 
 ## 📊 Model Performance Snapshot
 
@@ -138,10 +140,6 @@ The selected model was registered in the Databricks Model Registry and deployed 
 | Random Forest | 0.70 | 0.82 | 0.75 |
 | XGBoost | 0.68 | 0.80 | 0.73 |
 
-### Conclusion:
-
-- A tuned Random Forest model (max_depth = 6, n_estimators = 200) delivered the best performance, achieving 82% recall and 70% precision with a threshold of 0.33.
-- Unity Catalog enabled governed data access, SHAP provided explainability, and MLflow ensured reproducible training, tracking, and deployment.
 ---
 
 ### HIGH RISK FACTORS FROM MODEL AND RECOMMENDATIONS TO HR TEAMS: 
@@ -152,8 +150,7 @@ The selected model was registered in the Databricks Model Registry and deployed 
    
 --- 
 
-
-## 💡 Why This Project Matters:
+## Why This Project Matters:
 
 This project operationalizes machine learning in People Analytics by combining scalable data architecture, reproducible experimentation, explainability, and real-time serving—bridging the gap between data science and production ML.
 
