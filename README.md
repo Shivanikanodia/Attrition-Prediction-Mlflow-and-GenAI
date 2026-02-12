@@ -122,9 +122,17 @@ The endpoint retrieves the latest Gold-layer features, generates attrition risk 
 
 ---
 
-### Model Outputs and using Genie to infer from UC Tables:
+### Finacial Impact Modeling using Genie to infer from UC Tables:
+
+
+Attrition Risk Score × Replacement Cost × Headcount = Estimated Financial Risk Exposure
+
+
 
 <img width="729" height="135" alt="Screenshot 2026-02-11 at 22 33 35" src="https://github.com/user-attachments/assets/689ee710-46c0-481d-b591-85d6462a82ca" />
+
+
+
 
 
 <img width="1134" height="409" alt="Screenshot 2026-02-11 at 22 34 43" src="https://github.com/user-attachments/assets/6f529950-1e8c-4a04-8221-ff77067eca58" />
