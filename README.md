@@ -97,32 +97,56 @@ Logged key hyperparameters, evaluation metrics, trained model and visual artifac
 
 As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration of each Run and metrics logged.  Used the MLflow UI in Databricks to compare multiple runs of Logistic Regression, Random Forest, and XGBoost. 
 
+
+
 <img width="1264" height="440" alt="Screenshot 2025-10-07 at 11 25 24" src="https://github.com/user-attachments/assets/1ef7910e-319a-4d11-9ffd-5691308bcfb8" />
+
+
+
 
 Each dashboard recorded: adjusted_f1, adjusted_precision, adjusted_recall, precision, recall and f1 score. 
 
+
+
+
 <img width="908" height="363" alt="Screenshot 2025-10-07 at 07 30 50" src="https://github.com/user-attachments/assets/fcd14556-35a6-40a7-a289-db8e17fb9729" />
+
+
+
 
 <img width="928" height="362" alt="Screenshot 2025-10-07 at 07 31 20" src="https://github.com/user-attachments/assets/f5446022-0a39-4c09-98ee-10de40d85eda" />
 
+
+
 ---
+
+
+<img width="2368" height="876" alt="image" src="https://github.com/user-attachments/assets/a538168b-26c0-40fe-825c-e02ad9731f9a" />
+
 
 ### MODEL SERVING AND REGISTRY: 
 
 The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions in JSON format, enabling integration with downstream applications and monitoring pipelines.
 
 
+
 <img width="632" height="227" alt="Screenshot 2025-10-18 at 20 46 12" src="https://github.com/user-attachments/assets/30af9741-4000-4161-b440-9446459431aa" />
+
+
+
+
+<img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/cad7bfd1-fe98-4677-8220-fbfdda0196d6" />
+
+
+
 
 ---
 
 ### GenAI app using Served Model for making real time predictions and recommendations:
 
+<img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" />
 
-
-
-
-
+---
 
 ## 📊 Model Performance Snapshot
 
