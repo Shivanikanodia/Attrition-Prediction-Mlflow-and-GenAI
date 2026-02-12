@@ -109,7 +109,10 @@ Each dashboard recorded: adjusted_f1, adjusted_precision, adjusted_recall, preci
 
 
 
+
 <img width="908" height="363" alt="Screenshot 2025-10-07 at 07 30 50" src="https://github.com/user-attachments/assets/fcd14556-35a6-40a7-a289-db8e17fb9729" />
+
+
 
 
 
@@ -118,10 +121,14 @@ Each dashboard recorded: adjusted_f1, adjusted_precision, adjusted_recall, preci
 
 
 
+
 ---
 
 
+
 <img width="2368" height="876" alt="image" src="https://github.com/user-attachments/assets/a538168b-26c0-40fe-825c-e02ad9731f9a" />
+
+
 
 
 ### MODEL SERVING AND REGISTRY: 
@@ -135,16 +142,20 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 
 
-<img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/cad7bfd1-fe98-4677-8220-fbfdda0196d6" />
-
-
-
+<img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/6661d742-a47f-433c-9773-8bd5929310fc" />
 
 ---
 
 ### GenAI app using Served Model for making real time predictions and recommendations:
 
+
+
+
+
 <img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" />
+
+
+
 
 ---
 
