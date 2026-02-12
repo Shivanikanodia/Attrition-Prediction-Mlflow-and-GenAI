@@ -120,24 +120,42 @@ The endpoint retrieves the latest Gold-layer features, generates attrition risk 
 
 <img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" />
 
+
+
 ---
 
 ### Finacial Impact Modeling using Genie to infer from UC Tables:
 
 
-Attrition Risk Score × Replacement Cost × Headcount = Estimated Financial Risk Exposure
+Instead of stopping at accuracy, We translated attrition probabilities into expected financial exposure.
 
+We calculated expected financial exposure at the individual employee level by multiplying each employee’s attrition probability by their estimated replacement cost. We then aggregated this across departments to identify where financial exposure is highest
+
+### Formula:
+
+Individual Expected Costᵢ = P(Attritionᵢ) × Replacement Costᵢ
+
+Total Department Exposure (Total expected replacement cost) = Σ (P × Replacement Cost)
+
+Expected Attrition Volume= ∑P(Attritioni​)
+
+### Outputs:
+
+- Expected attrition volume
+
+- Total expected replacement cost
+
+- % High-risk employees per department
+
+### Result:
+
+Research & Development showed highest projected financial exposure.
 
 
 <img width="729" height="135" alt="Screenshot 2026-02-11 at 22 33 35" src="https://github.com/user-attachments/assets/689ee710-46c0-481d-b591-85d6462a82ca" />
 
 
-
-
-
 <img width="1134" height="409" alt="Screenshot 2026-02-11 at 22 34 43" src="https://github.com/user-attachments/assets/6f529950-1e8c-4a04-8221-ff77067eca58" />
-
-
 
 
 ## 📊 Model Performance Snapshot
