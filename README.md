@@ -93,7 +93,7 @@ Logged key hyperparameters, evaluation metrics, trained model and visual artifac
 
 ---
 
-#### MLFLOW METRICS AND DASHBOARD:  
+#### MLFLOW METRICS:  
 
 As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration of each Run and metrics logged.  Used the MLflow UI in Databricks to compare multiple runs of Logistic Regression, Random Forest, and XGBoost. 
 
@@ -102,19 +102,11 @@ As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration
 <img width="1264" height="440" alt="Screenshot 2025-10-07 at 11 25 24" src="https://github.com/user-attachments/assets/1ef7910e-319a-4d11-9ffd-5691308bcfb8" />
 
 
-
 ---
-
-
-
-<img width="2368" height="876" alt="image" src="https://github.com/user-attachments/assets/a538168b-26c0-40fe-825c-e02ad9731f9a" />
-
-
-
 
 ### MODEL SERVING AND REGISTRY: 
 
-The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions in JSON format, enabling integration with downstream applications and monitoring pipelines.
+The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions, enabling integration with downstream applications and monitoring pipelines.
 
 
 
@@ -123,19 +115,17 @@ The selected model was registered in the Databricks Model Registry and deployed 
 
 
 
+
 <img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/6661d742-a47f-433c-9773-8bd5929310fc" />
+
 
 ---
 
-### GenAI app using Served Model for making real time predictions and recommendations:
 
-
-
+### GenAI app for making real time predictions and recommendations:
 
 
 <img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" />
-
-
 
 
 ---
@@ -168,15 +158,6 @@ The selected model was registered in the Databricks Model Registry and deployed 
 This project operationalizes machine learning in People Analytics by combining scalable data architecture, reproducible experimentation, explainability, and real-time serving—bridging the gap between data science and production ML.
 
 It enables HR leaders to prioritize interventions based on financial risk, translates predictions into executive-ready cost metrics, improves transparency through SHAP-based explainability, reduces reactive hiring via probabilistic attrition forecasting, and integrates predictive ML with Generative AI to automate risk insights and recommendations
-
----
-
-### Tech Stack:
-
-- **Languages**: Python  
-- **Libraries**: `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`, `mlflow`, `shap`  
-- **Platform**: Databricks  
-- **Version Control & Tracking**: MLflow. 
   
 ---
 
