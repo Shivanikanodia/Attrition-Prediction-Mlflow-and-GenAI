@@ -188,11 +188,13 @@ Expected Cost → Department Financial Exposure
 Integrated Databricks LLM capabilities to convert model outputs into executive-ready insights using databricks-llama-4-maverick.
 
 Generated automatically:
-- Risk explanations
+- Risk explanations and key drivers
 - Targeted retention strategies
 
 Example:
-If competitive Job Market and High Demand of Skills are key drivers of attrition, the system recommends Career Developement and Growth opportunities.
+If competitive Job Market and High Demand of Skills are key drivers of attrition for R&D Department, the system recommends Career Developement, compensation and benefits reviews for indsutry standards and Growth opportunities.
+
+This would enable HRBP's to allocate budget on targeted retention strategies proactively and priortise business critical roles.  
 
 <img width="2048" height="678" alt="image" src="https://github.com/user-attachments/assets/69176a87-9929-4c5e-b8bb-b40ae6ef7170" />
 
