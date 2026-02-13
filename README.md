@@ -222,26 +222,3 @@ pip install -r requirements.txt
 
 ---
 
-Expected Attrition Volume=∑P(Attritioni)\textbf{Expected Attrition Volume} = \sum P(\text{Attrition}_i)Expected Attrition Volume=∑P(Attritioni​)
-
-
-<img width="729" height="135" alt="Screenshot 2026-02-11 at 22 33 35" src="https://github.com/user-attachments/assets/689ee710-46c0-481d-b591-85d6462a82ca" />
-
-
-<img width="1134" height="409" alt="Screenshot 2026-02-11 at 22 34 43" src="https://github.com/user-attachments/assets/6f529950-1e8c-4a04-8221-ff77067eca58" />
-
-<img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" 
-
-<img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/6661d742-a47f-433c-9773-8bd5929310fc" />
-
-<img width="1652" height="770" alt="image" src="https://github.com/user-attachments/assets/337de7ee-528b-47fe-b096-f43e4f133c5f" />
-
-
-<img width="1264" height="440" alt="Screenshot 2025-10-07 at 11 25 24" src="https://github.com/user-attachments/assets/1ef7910e-319a-4d11-9ffd-5691308bcfb8" />
-
-
-<img width="1039" alt="Experimentation" src="https://github.com/user-attachments/assets/a927d8d0-5ea7-4e53-8365-fdb842b5bd62" 
-
-img width="662" height="298" alt="image" src="https://github.com/user-attachments/assets/6204d8cc-c4e2-49d3-9fb8-f6434b8d1601" />
-
-
