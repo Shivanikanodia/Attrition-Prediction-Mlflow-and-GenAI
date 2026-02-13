@@ -147,7 +147,7 @@ Ensures reproducibility and experiment governance.
 
 - Supports real-time attrition risk inference
 
-The endpoint retrieves Gold-layer features and returns attrition probability predictions.
+The endpoint retrieves Gold-layer features and returns attrition probability prediction using version 3 model. 
 
 ---
 
@@ -176,7 +176,7 @@ Expected Attrition Volume = Σ P(Attritionᵢ)
 
 # 🤖 Generative AI Integration
 
-Integrated Databricks LLM capabilities to convert model outputs into executive-ready insights.
+Integrated Databricks LLM capabilities to convert model outputs into executive-ready insights using databricks-llama-4-maverick.
 
 Generated automatically:
 - Risk explanations
