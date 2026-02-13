@@ -1,192 +1,225 @@
-### End-to-End Employee Attrition Prediction Pipeline on Databricks (MLflow, Unity Catalog and GenAI)
-
-Attrition and Turnover Rate refers to the rate at which employees leave a company. Employee turnover is a costly problem for organizations. The cost of replacing an employee can be quite large, and a study found that companies typically pay about one-fifth of an employee's salary to replace them. 
-
-The cost can significantly increase if executives or highest-paid employees are to be replaced. The cost of replacing employees for most employers remains significant. This is due to the amount of time spent to interview and find a replacement, sign-on bonuses, and the loss of productivity for several months while the new employee gets accustomed to the new role. 
-
---- 
-
-#### Problem Statement:
-
-HR Leaders and HRBPs face high attrition and rising hiring costs without clear visibility into high-risk segments or key attrition drivers. This project builds a data-driven framework to predict employee attrition, assess financial impact, and recommend targeted retention strategies.
-
-This is a supervised binary classification problem where:
-
-0 → Likely to stay
-
-1 → Likely to leave
-
-The target variable represents the probability of an employee leaving the company.
+# 🚀 End-to-End Employee Attrition Prediction Pipeline on Databricks  
+### MLflow | Unity Catalog | Model Serving | Generative AI Integration
 
 ---
 
-### Project Structure
+## 📌 Business Problem
 
-**Data Engineering:**  Data exploration and storage in Unity Catalog using Medallion Architecture (Bronze, Silver, Gold).
+Employee attrition significantly increases hiring, onboarding, and productivity costs. Research indicates replacing an employee can cost up to **20% of their annual salary**, with even higher impact for senior roles.
 
-**EDA:** Distribution analysis, summary statistics, skewness, and visualizations.
+HR teams often lack visibility into:
+- High-risk employee segments
+- Key drivers of attrition
+- Financial exposure by department
 
-**Feature Selection:** Statistical testing (A/B testing) to identify key predictors and store feature tables.
-
-**Preprocessing:** Encoding, scaling, and train-test split.
-
-**Modeling:** Train and evaluate classification models using confusion matrix and classification report.
-
-**MLflow Tracking:** Log parameters, metrics, artifacts, and model files for reproducibility.
-
-**GenAI Integration:** Use Databricks SDK (WorkspaceClient) to generate natural language explanations of attrition risk, financial impact, and recommended intervention strategies.
-
-This enables proactive retention planning and optimized HR budget allocation.
+This project builds a **production-ready, end-to-end ML pipeline** to predict attrition risk, quantify financial impact, and recommend targeted retention strategies.
 
 ---
 
-#### Dataset Overview: 
+## 🎯 Objective
 
-The dataset includes employee demographics, Job role information, Engagement, and performance-related metrics.
-Performed categorical feature analysis by examining unique values and their frequency distributions to understand representation and potential imbalance across categories.
-Identified and handled missing values and empty strings using isnull().sum() and appropriate data-cleaning strategies.
-Numerical features such as Distance from Home, Monthly Income, Years at Company, Years Since Last Promotion, and Total Working Years exhibited right-skewed distributions. 
+This is a supervised binary classification problem:
 
----
+- `0` → Likely to Stay  
+- `1` → Likely to Leave  
 
-#### Unity Catalog & Medallion Architecture:
-
-The project follows a Bronze–Silver–Gold medallion architecture to ensure scalable, reliable, and reusable ML features.
-
-• Bronze: Raw employee event data ingested as Delta tables. **(bronze-emplpoyee_raw)** 
-• Silver: Cleaned, standardized, and validated datasets. **(silver_employee_clean)**
-• Gold: Feature-engineered and analytics-ready tables used for ML training and inference. **(employee_interactions)**
-
-Created a Unity Catalog catalog (employee_attrition_catalog) and schema (attrition_schema) to store Bronze, Silver, and Gold Delta tables, enabling governed, scalable, and versioned access to datasets used across the ML workflow.
-
-<img width="662" height="298" alt="image" src="https://github.com/user-attachments/assets/6204d8cc-c4e2-49d3-9fb8-f6434b8d1601" />
+The model outputs the probability of attrition for each employee.
 
 ---
 
-### Feature Selection:
+# 🏗 Architecture Overview
 
-- Feature selection was performed to identify the most predictive and stable drivers of employee attrition while reducing noise and multicollinearity.
-- Applied Chi-square tests to evaluate the association between categorical features (e.g., job role, overtime, work-life balance) and employee attrition.
-- Used two-sample t-tests to assess statistically significant differences in continuous features (e.g., monthly income, years at company, distance from home) between attrition and non-attrition groups.
-- Combined statistical test results with domain knowledge to ensure retained features were both predictive and interpretable for business stakeholders.
-- Validated feature importance consistency across Logistic Regression, Random Forest, and XGBoost models to reduce model-specific bias.
-___
+## 🔹 Medallion Architecture (Unity Catalog Governed)
 
-#### MODEL SELECTION:
+| Layer  | Description                              | Table Name                |
+|--------|------------------------------------------|---------------------------|
+| Bronze | Raw ingested employee data               | `bronze_employee_raw`     |
+| Silver | Cleaned and standardized dataset         | `silver_employee_clean`   |
+| Gold   | Feature-engineered ML-ready dataset      | `employee_interactions`   |
 
-- Logistic regression with L1 and L2 Penality, and class weight balanced to account for coefficents and features.
-- Random forest classiffier with hyperparamters like max_depth, n_estimators which will help us to generalize well, and deal with variance and overfitting. 
-- Xgboost Classifier to deal with complex data points. 
+Created:
+- **Catalog:** `employee_attrition_catalog`
+- **Schema:** `attrition_schema`
 
----
-
-#### Model Experimentation using MLFLOW:
-
-Setting the Experimentation inside Databricks Notebook. 
-
-<img width="1039" alt="Experimentation" src="https://github.com/user-attachments/assets/a927d8d0-5ea7-4e53-8365-fdb842b5bd62" />
-
-This centralized tracking ensured experiment reproducibility and logging Hyperparameter from models, metrics, artifacts and model versioning. 
-Logged key hyperparameters, evaluation metrics, trained model and visual artifacts like confusion matrix for every run — making it easy to reproduce or explain later.
+This ensures governed, scalable, and version-controlled data access.
 
 ---
 
-#### MLFLOW METRICS:  
+# 📊 Dataset Overview
 
-As we can see screenshot below from Databricks MLFlow UI with Run Name, Duration of each Run and metrics logged.  Used the MLflow UI in Databricks to compare multiple runs of Logistic Regression, Random Forest, and XGBoost. 
+The dataset includes:
+- Employee demographics
+- Job role information
+- Engagement metrics
+- Performance-related attributes
 
-<img width="1264" height="440" alt="Screenshot 2025-10-07 at 11 25 24" src="https://github.com/user-attachments/assets/1ef7910e-319a-4d11-9ffd-5691308bcfb8" />
-
----
-
-### MODEL REGISTERED: 
-
-The selected model was registered in the Databricks Model Registry and deployed via Databricks Model Serving to support real-time inference. 
-
-<img width="1652" height="770" alt="image" src="https://github.com/user-attachments/assets/337de7ee-528b-47fe-b096-f43e4f133c5f" />
-
-
-### MODEL SERVED: 
-
-The endpoint retrieves the latest Gold-layer features, generates attrition risk scores, and returns predictions, enabling integration with downstream applications and monitoring pipelines.
-
-
-<img width="2352" height="606" alt="image" src="https://github.com/user-attachments/assets/6661d742-a47f-433c-9773-8bd5929310fc" />
-
+### Data Preparation
+- Handled missing values and empty strings
+- Analyzed categorical distributions for imbalance
+- Addressed right-skewed numerical features
+- Cleaned and validated data in Silver layer
 
 ---
 
-### GenAI app for making real time predictions and recommendations:
+# 🔍 Feature Selection
 
-<img width="2054" height="680" alt="image" src="https://github.com/user-attachments/assets/8b65cbcb-f6d4-4c2e-9754-95e769850f57" />
+Feature selection was performed using statistical testing combined with HR domain knowledge.
 
+### Methods Used:
+- **Chi-square tests** for categorical variables  
+- **Two-sample t-tests** for continuous variables  
 
+### Key Predictors Identified:
+- Overtime  
+- Job Satisfaction  
+- Work-Life Balance  
+- Years at Company  
+- Monthly Income  
 
 ---
 
-### Finacial Impact Modeling using Genie to infer from UC Tables:
+# ⚙️ Modeling & Experimentation (MLflow)
 
+## Models Compared:
+- Logistic Regression (L1/L2 Regularization + Class Weight Balanced)
+- Random Forest Classifier
+- XGBoost Classifier
 
-Instead of stopping at accuracy, We translated attrition probabilities into expected financial exposure.
+## Handling Class Imbalance:
+- Applied **SMOTE** to improve minority class representation
 
-We calculated expected financial exposure at the individual employee level by multiplying each employee’s attrition probability by their estimated replacement cost. We then aggregated this across departments to identify where financial exposure is highest
+## Threshold Optimization:
+Instead of relying on the default 0.5 cutoff, decision thresholds were tuned to prioritize **recall**.
+
+> Missing a high-risk employee is more costly than investigating a false positive.
+
+All parameters, metrics, artifacts, and models were logged using **MLflow**.
+
+---
+
+## 📈 Model Performance
+
+| Model | Precision | Recall | F1 Score |
+|--------|------------|--------|----------|
+| Logistic Regression | 0.62 | 0.74 | 0.67 |
+| Random Forest | 0.70 | 0.82 | **0.75** |
+| XGBoost | 0.68 | 0.80 | 0.73 |
+
+🏆 **Selected Model: Random Forest**
+
+---
+
+# 🧪 Experiment Tracking
+
+Using MLflow:
+- Logged hyperparameters
+- Tracked evaluation metrics
+- Stored confusion matrices
+- Versioned trained models
+- Registered best model in Model Registry
+
+Ensures reproducibility and experiment governance.
+
+---
+
+# 🚀 Model Deployment
+
+- Registered in **Databricks Model Registry**
+- Deployed via **Databricks Model Serving**
+- Supports real-time attrition risk inference
+
+The endpoint retrieves Gold-layer features and returns attrition probability predictions.
+
+---
+
+# 💰 Financial Impact Modeling
+
+Attrition probabilities were translated into expected financial exposure.
 
 ### Formula:
 
-Individual Expected Costᵢ = P(Attritionᵢ) × Replacement Costᵢ
-
-Total Department Exposure (Total expected replacement cost) = Σ (P × Replacement Cost)
-
-Expected Attrition Volume= ∑P(Attritioni​)
+```
+Individual Expected Costᵢ = P(Attritionᵢ) × Replacement Costᵢ  
+Total Department Exposure = Σ (P × Replacement Cost)  
+Expected Attrition Volume = Σ P(Attritionᵢ)
+```
 
 ### Outputs:
-
 - Expected attrition volume
-
 - Total expected replacement cost
-
-- % High-risk employees per department
-
-### Result:
-
-Research & Development showed highest projected financial exposure.
-
-
-<img width="729" height="135" alt="Screenshot 2026-02-11 at 22 33 35" src="https://github.com/user-attachments/assets/689ee710-46c0-481d-b591-85d6462a82ca" />
-
-
-<img width="1134" height="409" alt="Screenshot 2026-02-11 at 22 34 43" src="https://github.com/user-attachments/assets/6f529950-1e8c-4a04-8221-ff77067eca58" />
-
-
-## 📊 Model Performance Snapshot
-
-| Model | Precision | Recall | F1 Score |
-|-----|---------|-------|--------|
-| Logistic Regression | 0.62 | 0.74 | 0.67 |
-| Random Forest | 0.70 | 0.82 | 0.75 |
-| XGBoost | 0.68 | 0.80 | 0.73 |
+- Percentage of high-risk employees per department
 
 ---
 
-### HIGH RISK FACTORS FROM MODEL AND RECOMMENDATIONS TO HR TEAMS: 
+# 🤖 Generative AI Integration
 
-- Overtime, Low Job satisfaction and Poor work-life balance - Monitor satisfaction & workload monthly.
-- Employees with long commutes or frequent travel - Enable flexible work or hybrid policies.
-- Employees with limited growth, low income or recognition  - Design retention bonuses or stock options.
-   
---- 
+Integrated Databricks LLM capabilities to convert model outputs into executive-ready insights.
 
-## Why This Project Matters:
+Generated automatically:
+- Risk explanations
+- Financial impact summaries
+- Targeted retention strategies
 
-This project operationalizes machine learning in People Analytics by combining scalable data architecture, reproducible experimentation, explainability, and real-time serving—bridging the gap between data science and production ML.
+Example:
+If overtime and low job satisfaction are key drivers, the system recommends workload monitoring and flexible work policies.
 
-It enables HR leaders to prioritize interventions based on financial risk, translates predictions into executive-ready cost metrics, improves transparency through SHAP-based explainability, reduces reactive hiring via probabilistic attrition forecasting, and integrates predictive ML with Generative AI to automate risk insights and recommendations
-  
 ---
 
-### 📁 Clone the repository
+# 📊 Key Insight
+
+The **Research & Development department** showed the highest projected attrition exposure, making it a priority for intervention planning.
+
+Databricks Genie enables natural language queries over governed Unity Catalog tables, allowing leaders to ask:
+
+> “Which department should prioritize intervention this quarter?”
+
+---
+
+# 🌟 Why This Project Matters
+
+This solution operationalizes machine learning in People Analytics by combining:
+
+- Scalable data architecture
+- Governed feature engineering
+- Reproducible ML experimentation
+- Cost-sensitive threshold tuning
+- Real-time model serving
+- Financial risk quantification
+- Generative AI-powered insights
+
+It bridges the gap between data science experimentation and production ML systems.
+
+---
+
+# 📁 Clone the Repository
+
+```bash
 git clone https://github.com/<ShivaniKanodia>/employee-attrition-mlpipeline.git
 cd employee-attrition-mlpipeline
+```
 
-### 📦 Install Python dependencies
+---
+
+# 📦 Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
+
+---
+
+## 📌 Tech Stack
+
+- Python
+- Scikit-learn
+- XGBoost
+- Databricks
+- MLflow
+- Unity Catalog
+- Delta Tables
+- Databricks Model Serving
+- Generative AI (LLM Integration)
+
+---
+
+
