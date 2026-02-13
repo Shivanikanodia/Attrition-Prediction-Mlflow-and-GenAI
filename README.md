@@ -180,7 +180,6 @@ Integrated Databricks LLM capabilities to convert model outputs into executive-r
 
 Generated automatically:
 - Risk explanations
-- Financial impact summaries
 - Targeted retention strategies
 
 Example:
