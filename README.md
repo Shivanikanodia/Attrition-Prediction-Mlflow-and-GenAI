@@ -192,7 +192,7 @@ Generated automatically:
 - Targeted retention strategies
 
 Example:
-If overtime and low job satisfaction are key drivers, the system recommends workload monitoring and flexible work policies.
+If competitive Job Market and High Demand of Skills are key drivers of attrition, the system recommends Career Developement and Growth opportunities.
 
 <img width="2048" height="678" alt="image" src="https://github.com/user-attachments/assets/69176a87-9929-4c5e-b8bb-b40ae6ef7170" />
 
