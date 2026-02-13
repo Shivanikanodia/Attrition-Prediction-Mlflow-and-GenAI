@@ -43,6 +43,10 @@ Created:
 
 This ensures governed, scalable, and version-controlled data access.
 
+
+<img width="662" height="298" alt="image" src="https://github.com/user-attachments/assets/086b759d-46aa-4e52-98b6-ac4265249036" />
+
+
 ---
 
 # 📊 Dataset Overview
@@ -79,6 +83,9 @@ Feature selection was performed using statistical testing combined with HR domai
 ---
 
 # ⚙️ Modeling & Experimentation (MLflow)
+
+<img width="1264" height="440" alt="498590430-1ef7910e-319a-4d11-9ffd-5691308bcfb8" src="https://github.com/user-attachments/assets/5b2202ff-8686-434b-9eb7-f87b53b18468" />
+
 
 ## Models Compared:
 - Logistic Regression (L1/L2 Regularization + Class Weight Balanced)
@@ -120,21 +127,36 @@ Using MLflow:
 
 Ensures reproducibility and experiment governance.
 
+
+
 ---
 
 # 🚀 Model Deployment
 
 - Registered in **Databricks Model Registry**
+
+
+<img width="1652" height="770" alt="image" src="https://github.com/user-attachments/assets/8a64a7d6-84ff-439a-9a9a-c56d4c2fc01a" />
+
+
 - Deployed via **Databricks Model Serving**
+
+
+<img width="2048" height="527" alt="image" src="https://github.com/user-attachments/assets/1f080ff4-6aac-4ab6-ad84-b8cd98d96b69" />
+
+
 - Supports real-time attrition risk inference
 
 The endpoint retrieves Gold-layer features and returns attrition probability predictions.
 
 ---
 
-# 💰 Financial Impact Modeling
+# 💰 Financial Impact Modeling:
 
 Attrition probabilities were translated into expected financial exposure.
+
+<img width="1458" height="270" alt="image" src="https://github.com/user-attachments/assets/2ddad476-5677-4082-8e5c-4bd73548504b" />
+
 
 ### Formula:
 
@@ -148,6 +170,7 @@ Expected Attrition Volume = Σ P(Attritionᵢ)
 - Expected attrition volume
 - Total expected replacement cost
 - Percentage of high-risk employees per department
+
 
 ---
 
@@ -163,6 +186,9 @@ Generated automatically:
 Example:
 If overtime and low job satisfaction are key drivers, the system recommends workload monitoring and flexible work policies.
 
+<img width="2048" height="678" alt="image" src="https://github.com/user-attachments/assets/69176a87-9929-4c5e-b8bb-b40ae6ef7170" />
+
+
 ---
 
 # 📊 Key Insight
@@ -171,7 +197,9 @@ The **Research & Development department** showed the highest projected attrition
 
 Databricks Genie enables natural language queries over governed Unity Catalog tables, allowing leaders to ask:
 
-> “Which department should prioritize intervention this quarter?”
+> “Where to put intervention plan this quarter?”
+
+<img width="2048" height="738" alt="image" src="https://github.com/user-attachments/assets/df8b5588-38e8-427d-b362-bcff9661596d" />
 
 ---
 
