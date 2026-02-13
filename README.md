@@ -153,7 +153,7 @@ The endpoint retrieves Gold-layer features and returns attrition probability pre
 
 # 💰 Financial Impact Modeling:
 
-Attrition probabilities were translated into expected financial exposure, for each department and headcounts. 
+Attrition probabilities were translated into expected financial exposure, for each department. 
 
 <img width="1458" height="270" alt="image" src="https://github.com/user-attachments/assets/2ddad476-5677-4082-8e5c-4bd73548504b" />
 
@@ -161,9 +161,13 @@ Attrition probabilities were translated into expected financial exposure, for ea
 ### Formula:
 
 ```
+
+We used an industry benchmark of approximately 20% of annual salary as replacement cost, which accounts for hiring, onboarding, productivity loss, and training expenses.
+
+
 Individual Expected Costᵢ = P(Attritionᵢ) × Replacement Costᵢ  
-Total Department Exposure = Σ (P × Replacement Cost)  
-Expected Attrition Volume = Σ P(Attritionᵢ)
+Total Replacement cost (By Department) = SUM (P × Replacement Cost)  
+Expected Attrition Volume = Σ P(Attritionᵢ) - ( Sum of Bernoulli expectations = sum of probabilities)
 ```
 
 ### Outputs:
