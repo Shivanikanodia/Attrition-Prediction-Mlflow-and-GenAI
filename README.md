@@ -153,7 +153,7 @@ The endpoint retrieves Gold-layer features and returns attrition probability pre
 
 # 💰 Financial Impact Modeling:
 
-Attrition probabilities were translated into expected financial exposure.
+Attrition probabilities were translated into expected financial exposure, for each department and headcounts. 
 
 <img width="1458" height="270" alt="image" src="https://github.com/user-attachments/assets/2ddad476-5677-4082-8e5c-4bd73548504b" />
 
