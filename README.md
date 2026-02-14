@@ -155,7 +155,7 @@ The endpoint retrieves Gold-layer features and returns attrition probability pre
 
 Attrition probabilities were translated into expected financial exposure, for each department. 
 
-<img width="1458" height="270" alt="image" src="https://github.com/user-attachments/assets/2ddad476-5677-4082-8e5c-4bd73548504b" />
+<img width="848" height="134" alt="Screenshot 2026-02-13 at 17 10 42" src="https://github.com/user-attachments/assets/e8e2f707-fb91-4871-beb0-5bdf23ae6db9" />
 
 
 ### Formula:
@@ -196,7 +196,7 @@ If competitive Job Market and High Demand of Skills are key drivers of attrition
 
 This would enable HRBP's to allocate budget on targeted retention strategies proactively and priortise business critical roles.  
 
-<img width="2048" height="678" alt="image" src="https://github.com/user-attachments/assets/69176a87-9929-4c5e-b8bb-b40ae6ef7170" />
+<img width="2122" height="744" alt="image" src="https://github.com/user-attachments/assets/7100abde-b978-4d1d-bd07-12444e0b37d6" />
 
 
 ---
@@ -207,9 +207,10 @@ The **Research & Development department** showed the highest projected attrition
 
 Databricks Genie enables natural language queries over governed Unity Catalog tables, allowing leaders to ask:
 
-> “Where to put intervention plan this quarter?”
+> “What is percentage of high risk employees and cost associated?”
 
-<img width="2048" height="738" alt="image" src="https://github.com/user-attachments/assets/df8b5588-38e8-427d-b362-bcff9661596d" />
+<img width="1249" height="503" alt="Screenshot 2026-02-13 at 17 20 24" src="https://github.com/user-attachments/assets/d729cca7-bbdc-49dc-8356-a2afd7356894" />
+
 
 ---
 
