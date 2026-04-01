@@ -162,7 +162,7 @@ Attrition probabilities were translated into expected financial exposure, for ea
 
 ```
 
-We used an industry benchmark of approximately 20% of annual salary as replacement cost, which accounts for hiring, onboarding, productivity loss, and training expenses.
+We used an industry benchmark of approximately 1.5x of annual salary as replacement cost, which accounts for hiring, onboarding, productivity loss, and training expenses.
 
 
 Individual Expected Costᵢ = P(Attritionᵢ) × Replacement Costᵢ  
