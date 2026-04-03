@@ -192,7 +192,7 @@ Generated automatically:
 - Targeted retention strategies
 
 Example:
-If competitive Job Market and High Demand of Skills are key drivers of attrition for R&D Department, the system recommends Career Developement, compensation and benefits reviews for indsutry standards and Growth opportunities.
+If competitive Job Market and High Demand of Skills are key drivers of attrition for R&D Department, the system recommends Career Developement, compensation and benefits reviews for industry standards and Growth opportunities.
 
 This would enable HRBP's to allocate budget on targeted retention strategies proactively and priortise business critical roles.  
 
