@@ -175,9 +175,9 @@ Expected Attrition Volume = Σ P(Attritionᵢ) - ( Sum of Bernoulli expectations
 - Total expected replacement cost
 - Percentage of high-risk employees per department
 
-1.Model → Probability 
+1. Model → Probability 
 
-2.Probability → Expected Exits
+2. Probability → Expected Exits
 
 3. Expected Exits → Expected Cost
 
