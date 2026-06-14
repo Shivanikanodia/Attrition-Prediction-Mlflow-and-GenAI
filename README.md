@@ -235,10 +235,9 @@ It bridges the gap between data science experimentation and production ML system
 
 # 📁 Clone the Repository
 
-```bash
-git clone https://github.com/<ShivaniKanodia>/employee-attrition-mlpipeline.git
-cd employee-attrition-mlpipeline
-```
+git clone https://github.com/Shivanikanodia/Attrition-Prediction-Mlflow-and-GenAI.git
+cd Attrition-Prediction-Mlflow-and-GenAI
+pip install -r requirements.txt
 
 ---
 
