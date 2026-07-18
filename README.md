@@ -5,14 +5,15 @@
 
 ## 📌 Business Problem
 
-Employee attrition significantly increases hiring, onboarding, and productivity costs. Research indicates replacing an employee can cost up to **20% of their annual salary**, with even higher impact for senior roles.
+Employee attrition significantly increases hiring, onboarding, and productivity costs. Research indicates replacing an employee can cost up to **20-150%% of their annual salary**, with even higher impact for senior roles.
 
 HR teams often lack visibility into:
-- High-risk employee segments
-- Key drivers of attrition
-- Financial exposure by department
+- Proactive monitoring of High-risk employee segments
+- Key drivers of attrition for department/team/employee level
+- Financial risk by department - (In highly specialised roles loosing even a single employee can cost significant amount as they take away knowledge, productivity and recruiters need 3-4 months to fill the role)
 
-This project builds a **production-ready, end-to-end ML pipeline** to predict attrition risk, quantify financial impact, and recommend targeted retention strategies.
+This project builds a **production-ready, end-to-end ML pipeline** to predict attrition risk by Department/Job Role, key drivers across employee cohorts, quantify financial impact, and recommend targeted retention strategies (low cost and high impact) using 30-60-90 days playbook.
+It demonstrates how we measure impact of retention strategies using A/B Testing by creating matched cohort groups to isolate the actual impact of change.
 
 ---
 
@@ -43,7 +44,6 @@ Created:
 
 This ensures governed, scalable, and version-controlled data access.
 
-
 <img width="662" height="298" alt="image" src="https://github.com/user-attachments/assets/086b759d-46aa-4e52-98b6-ac4265249036" />
 
 
@@ -52,16 +52,30 @@ This ensures governed, scalable, and version-controlled data access.
 # 📊 Dataset Overview
 
 The dataset includes:
-- Employee demographics
-- Job role information
-- Engagement metrics
-- Performance-related attributes
+- Employee demographics like age, gender and ethinicity (These are not passed to model to ensure we prevent biasness)
+- Job role, department and reporting manager information
+- Promotion and Compensation variables
+- Engagement scores from pulse surveys 
+- Performance rating (self vs manager)
 
 ### Data Preparation
-- Handled missing values and empty strings
-- Analyzed categorical distributions for imbalance
-- Addressed right-skewed numerical features
-- Cleaned and validated data in Silver layer
+
+Bronze Layer: 
+- Checked data freshness, schema, data types and critical fields.
+- Enfored data quality checks like matching records to source systems, dropping null id, negatives values in tenure and salaries and invalid categories and reasons for attrition reason.
+- implemented de-duplication logic to keep only the latest record per employee ID based on the system ingestion timestamp (_ingested_at).
+
+  Silver Layer:
+- Handled missing values in promotion and internal moblity counts and fixed outliers for distance from home and years since last promotion using capping at 99th percentile.
+- Transformed currencies from across the globe to baseline using Exchange rate and timespamp from 10+ multi-regions to UTC to ensure consistency and accuracy in dowmstream modeling.
+- Standardised 400+ vague job tittles into 12 Job familties. 
+- Ensured valid exit reasons are mapped to right attrition category ("voluntry, regrettable, involuntry"). 
+- Cleaned and validated data in Silver layer along with data masking and row level security to ensure manager from one region only sees his region employee records.
+
+ Gold Layer:
+- Addressed right-skewed numerical features using log transformation to compress large values and expand small values
+- Transformed categorical feature for numerical using pd.dummies to ensure error-free modeling for logistic classifier.
+- Applied Standard Scaling to bring values to same scale (Age and Salary) 
 
 ---
 
@@ -70,14 +84,14 @@ The dataset includes:
 Feature selection was performed using statistical testing combined with HR domain knowledge.
 
 ### Methods Used:
-- **Chi-square tests** for categorical variables  
-- **Two-sample t-tests** for continuous variables  
+- **Chi-square tests** for categorical variables like overtime and gender
+- **Two-sample t-tests** for continuous variables like job satisfaction scores, monthly income and years since last promotion
 
-### Key Predictors Identified:
+### Key Predictors Identified across organisation:
+
 - Overtime  
-- Job Satisfaction  
-- Work-Life Balance  
-- Years at Company  
+- Job Satisfaction & Work-Life Balance  
+- Years at Company & Years Since Last Promotion 
 - Monthly Income  
 
 ---
@@ -89,6 +103,7 @@ Feature selection was performed using statistical testing combined with HR domai
 
 ## Models Compared:
 - Logistic Regression (L1/L2 Regularization + Class Weight Balanced)
+- Decision Tree Classifier
 - Random Forest Classifier
 - XGBoost Classifier
 
@@ -162,7 +177,7 @@ Attrition probabilities were translated into expected financial exposure, for ea
 
 ```
 
-We used an industry benchmark of approximately 1.5x of annual salary as replacement cost, which accounts for hiring, onboarding, productivity loss, and training expenses.
+We used an industry benchmark of approximately 1.5x of annual salary as replacement cost, which accounts for hiring, onboarding, productivity loss, and specialised knowledge loss.
 
 
 Individual Expected Costᵢ = P(Attritionᵢ) × Replacement Costᵢ  
@@ -193,6 +208,8 @@ Integrated Databricks LLM capabilities to convert model outputs into executive-r
 Generated automatically:
 - Risk explanations and key drivers
 - Targeted retention strategies
+- timeline
+- Success metrics 
 
 Example:
 If competitive Job Market and High Demand of Skills are key drivers of attrition for R&D Department, the system recommends Career Developement, compensation and benefits reviews for industry standards and Growth opportunities.
@@ -210,7 +227,7 @@ The **Research & Development department** showed the highest projected attrition
 
 Databricks Genie enables natural language queries over governed Unity Catalog tables, allowing leaders to ask:
 
-> “What is percentage of high risk employees and cost associated?”
+> “What is percentage of high risk employees, top key drivers and cost associated?”
 
 <img width="1249" height="503" alt="Screenshot 2026-02-13 at 17 20 24" src="https://github.com/user-attachments/assets/d729cca7-bbdc-49dc-8356-a2afd7356894" />
 
@@ -236,7 +253,9 @@ It bridges the gap between data science experimentation and production ML system
 # 📁 Clone the Repository
 
 git clone https://github.com/Shivanikanodia/Attrition-Prediction-Mlflow-and-GenAI.git
+
 cd Attrition-Prediction-Mlflow-and-GenAI
+
 pip install -r requirements.txt
 
 ---
